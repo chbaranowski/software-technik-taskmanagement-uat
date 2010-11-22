@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Task Management" basedir=".">
+
+    <property file="build.properties" />
+
+    <path id="classpath.compile">
+        <fileset dir="${build.libraries}">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="target" />
+    </target>
+
+    <target name="compile" depends="clean">
+        <echo message="Compile UAT Test Sources..." />
+        <mkdir dir="${build.main.classes}" />
+        <javac srcdir="${build.src.main.java}" destdir="${build.main.classes}" debug="true" includes="**/*.java" source="1.6">
+            <classpath refid="classpath.compile" />
+        </javac>
+        <copy todir="${build.main.classes}">
+            <fileset dir="${build.src.main.java}" excludes="**/*.java" />
+        </copy>
+    </target>
+    
+    <target name="uat-test" depends="compile">
+        <echo message="Run Tests..." />
+        <mkdir dir="${build.test.reports}" />
+        <junit haltonfailure="true" haltonerror="true" printsummary="true">
+            <classpath>
+                <path refid="classpath.compile" />
+                <pathelement path="${build.main.classes}" />
+            </classpath>
+            <formatter type="xml" />
+            <batchtest todir="${build.test.reports}">
+                <fileset dir="${build.main.classes}" includes="**/*Test.class" />
+            </batchtest>
+        </junit>
+    </target>
+
+</project>
