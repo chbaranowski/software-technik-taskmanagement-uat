@@ -34,5 +34,10 @@ public class TaskTest {
 		assertTrue(webTester.isTextPresent("Create new Customer"));
 	}
 	
+	@Test
+	public void testCreateTask() throws Exception {
+		fail("fail");
+	}
+	
 	
 }
