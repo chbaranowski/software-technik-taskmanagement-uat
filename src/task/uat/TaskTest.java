@@ -49,6 +49,11 @@ public class TaskTest {
 		assertTrue(webTester.isTextPresent("Demo SDC Description"));
 	}
 	
+	@Test
+	public void testCreateTodoLink() throws Exception {
+		fail("not implement test");
+	}
+	
 	public void login(String username, String password){
 		webTester.open("/task/login");
 		webTester.type("username", username);
