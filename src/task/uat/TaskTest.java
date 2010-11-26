@@ -43,6 +43,11 @@ public class TaskTest {
 		assertEquals("Description", webTester.getText("//table[@id='customerTable']/tbody/tr[2]/td[2]"));
 	}
 	
+	@Test
+	public void testOverviewDescription() throws Exception {
+		fail("not impl");
+	}
+	
 	public void login(String username, String password){
 		webTester.open("/task/login");
 		webTester.type("username", username);
