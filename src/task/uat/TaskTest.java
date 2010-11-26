@@ -26,17 +26,29 @@ public class TaskTest {
 	
 	@Test
 	public void testLogin() throws Exception {
-		webTester.open("/task/login");
-		webTester.type("username", "tux");
-		webTester.type("password", "test");
-		webTester.click("loginButton");
-		webTester.waitForPageToLoad("30000");
+		login("tux", "test");
 		assertTrue(webTester.isTextPresent("Create new Customer"));
 	}
 	
 	@Test
 	public void testCreateTask() throws Exception {
-		fail("fail");
+		login("tux", "test");
+		webTester.click("link=Create new Customer");
+		webTester.waitForPageToLoad("30000");
+		webTester.type("title", "Test Title");
+		webTester.type("description", "Description");
+		webTester.click("saveButton");
+		webTester.waitForPageToLoad("30000");
+		assertEquals("Test Title", webTester.getText("//table[@id='customerTable']/tbody/tr[2]/td[1]"));
+		assertEquals("Description", webTester.getText("//table[@id='customerTable']/tbody/tr[2]/td[2]"));
+	}
+	
+	public void login(String username, String password){
+		webTester.open("/task/login");
+		webTester.type("username", username);
+		webTester.type("password", password);
+		webTester.click("loginButton");
+		webTester.waitForPageToLoad("30000");
 	}
 	
 	
