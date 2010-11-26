@@ -15,7 +15,7 @@ public class TaskTest {
 	
 	@Before
 	public void setup(){
-		webTester = new DefaultSelenium("localhost", 4444, "*chrome", "http://192.168.178.41:8080/");
+		webTester = new DefaultSelenium("localhost", 4444, "*chrome", "http://192.168.2.14:8080/");
 		webTester.start();
 	}
 	
