@@ -27,13 +27,13 @@ public class TaskTest {
 	@Test
 	public void testLogin() throws Exception {
 		login("tux", "test");
-		assertTrue(webTester.isTextPresent("Create new Customer"));
+		assertTrue(webTester.isTextPresent("Add new TODO..."));
 	}
 	
 	@Test
 	public void testCreateTask() throws Exception {
 		login("tux", "test");
-		webTester.click("link=Create new Customer");
+		webTester.click("link=Add new TODO...");
 		webTester.waitForPageToLoad("30000");
 		webTester.type("title", "Test Title");
 		webTester.type("description", "Description");
@@ -47,11 +47,6 @@ public class TaskTest {
 	public void testOverviewDescription() throws Exception {
 		login("tux", "test");
 		assertTrue(webTester.isTextPresent("Demo SDC Description"));
-	}
-	
-	@Test
-	public void testCreateTodoLink() throws Exception {
-		fail("not implement test");
 	}
 	
 	public void login(String username, String password){
