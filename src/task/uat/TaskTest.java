@@ -45,7 +45,8 @@ public class TaskTest {
 	
 	@Test
 	public void testOverviewDescription() throws Exception {
-		fail("not impl");
+		login("tux", "test");
+		assertTrue(webTester.isTextPresent("Demo SDC Description"));
 	}
 	
 	public void login(String username, String password){
